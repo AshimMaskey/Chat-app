@@ -27,18 +27,15 @@ const SignUpPage:React.FC = () => {
     if (!/\S+@\S+\.\S+/.test(formData.email)) return toast.error("Invalid email format");
     if (!formData.password) return toast.error("Password is required");
     if (formData.password.length < 6) return toast.error("Password must be at least 6 characters");
-
     return true;
   };
 
   const handleSubmit=(e: React.FormEvent<HTMLFormElement>)=>{
     e.preventDefault();
-    
     const success=validateForm();
-    if(success){
+    if(success===true){
       signup(formData);
     }
-
   }
 
   return (
