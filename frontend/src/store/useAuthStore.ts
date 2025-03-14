@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 
 interface AuthStore{
 	authUser: any,
+	onlineUsers:any,
 	isSigningUp: boolean,
 	isLoggingIn:boolean,
 	isUpdatingProfile:boolean,
@@ -30,7 +31,7 @@ export const useAuthStore=create<AuthStore>((set)=>({
 	isSigningUp:false,
 	isLoggingIn:false,	
 	isUpdatingProfile:false,
-
+	onlineUsers: [],
 	isCheckingAuth:true,
 
 	checkAuth:async()=>{
