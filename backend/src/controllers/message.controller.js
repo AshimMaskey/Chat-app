@@ -35,12 +35,12 @@ export const getMessages=async(req,res)=>{
 
 export const sendMessage=async(req,res)=>{
 	try {
-		const {file,text}=req.body;
+		const {image,text}=req.body;
 		const {id: recieverId}=req.params;
 		const senderId=req.user._id;
 
 		let imageUrl;
-		if(file){
+		if(image){
 			// upload base64 image to cloudinary
 			const uploadResponse = await cloudinary.uploader.upload(image);
 			imageUrl= uploadResponse.secure_url;
@@ -53,9 +53,7 @@ export const sendMessage=async(req,res)=>{
 			image:imageUrl
 		})
 		await newMessage.save();
-		
 		//todo realtime functionlaity goes here => socket.io
-
 		res.status(201).json(newMessage);
 	} catch (error) {
 		console.log("error in sendMessage controller", error.message);
