@@ -13,8 +13,9 @@ import { useThemeStore } from './store/useThemeStore'
 
 
 const App: React.FC = () => {
-  const {checkAuth,authUser ,isCheckingAuth}=useAuthStore();
+  const {checkAuth,authUser ,isCheckingAuth, onlineUsers}=useAuthStore();
   const {theme}=useThemeStore();
+  console.log(onlineUsers);
 
   useEffect(()=>{
     checkAuth();
